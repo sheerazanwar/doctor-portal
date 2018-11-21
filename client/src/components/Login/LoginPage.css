@@ -1,0 +1,127 @@
+.LoginPage{
+
+  width: 100% !important;
+  height:100%;
+  background-color: #156dbf;
+
+}
+
+.LoginPage .PageBody{
+  height: 100%;
+}
+
+.LoginPage .LeftSide
+{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  height: 100%;
+  width: 60%;
+}
+
+.LoginPage .RightSide
+{
+  display: flex;
+  height: 100%;
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 10px;
+}
+
+.LoginPage .signinForm
+{
+  box-shadow:5px 6px 50px #00000010, -1px -1px 50px #00000010;
+  border-radius: 2%;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 40px 30px 40px 30px;
+}
+
+.LoginPage .signupForm{
+  box-shadow:5px 6px 50px #00000010, -1px -1px 50px #00000010;
+  border-radius: 2%;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 40px 30px 40px 30px;
+}
+
+.LoginPage .FormName{
+  text-align: center;
+  font-size: 25px;
+}
+
+.LoginPage .form-control::-moz-placeholder {
+    text-align: center;
+    /* color: #f4f4f4; */
+  }
+
+
+
+ .LoginPage .signinButton {
+     margin-top: 10px;
+
+     background-color:  #156dbf;
+     border: none;
+     color:  #156dbf;
+     text-align: center;
+     text-decoration: none;
+     -webkit-transition-duration: 0.4s; /* Safari */
+     transition-duration: 0.4s;
+     cursor: pointer;
+     border-radius: 10px 10px 10px 10px;
+     height: 34px;
+     width: 40%;
+     background-color: #ffffff;
+     color:  #156dbf;
+     border: 2px solid  #156dbf;
+ }
+
+
+ .LoginPage .signinButton:hover {
+     background-color:  #156dbf;
+     color: #ffffff;
+ }
+
+ .LoginPage .round {
+   text-align: center;
+   background-color: #ffffff;
+   justify-content: center;
+   height: 30px;
+   font-size: 15px;
+}
+
+.LoginPage .link{
+  color:  #156dbf;
+  font-size: 15px;
+}
+
+.LoginPage .darkgrey{
+  color: #444444;
+}
+
+.LoginPage .LogoMain{
+  height: 30%;
+  object-fit: scale-down;
+}
+
+.LoginPage .facebookBtn
+{
+  padding: 10px;
+  color: #ffffff;
+  background-color: #156dbf;
+}
+
+.LoginPage .bottomDiv{
+  margin-top: 30px;
+}
+
+.LoginPage .FirebaseCaptcha{
+  height: 200px;
+  width: 100%;
+  background: #f4f4f4;
+}

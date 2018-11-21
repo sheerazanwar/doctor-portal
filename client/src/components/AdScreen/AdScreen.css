@@ -1,0 +1,333 @@
+.fontRegular{
+  font-family: proxr;
+}
+
+.fontSemiBold{
+  font-family: proxs;
+  color: #342d38;
+  text-align: left;
+  width: 100%;
+}
+
+.AdPage .leftSide
+{
+  margin-top: 30px;
+  width: 25%;
+
+}
+.AdPage .specsstorage{
+  margin-left:-4%;
+}
+.AdPage .specscolor{
+  margin-left:-17px;
+}
+
+.AdPage .middleSide
+{
+  margin-top: 30px;
+  width: 45%;
+  padding: 20px;
+
+}
+
+
+.AdPage .rightSide
+{
+  padding: 20px;
+  margin-top: 100px;
+  width: 30%;
+  background-color: #f4f4f4;
+
+  /* text-overflow:ellipsis; */
+}
+
+
+.AdScreen{
+  text-align: left;
+  font-family: proxr;
+}
+
+.backBtn
+{
+  text-align: left;
+  font-size: 25px;
+  margin-bottom: 50px;
+  font-size: 120%;
+}
+
+.userInfo{
+  margin-top: 50px;
+  padding: 0 10% 0 10%;
+}
+
+.userImageRound
+{
+  float: left;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: fill;
+  margin-right: 10px;
+}
+
+.userNameText
+{
+  font-weight: 500;
+  margin-left: 25px;
+  text-align: left;
+  font-size: 20px;
+  height: 18px;
+}
+.userAreaText
+{
+  margin-top: 0px;
+  margin-left: 25px;
+  text-align: left;
+}
+.AdPage .report{
+  float: left;
+  margin-left: 25px;
+  font-style: italic;
+}
+.Dropdown-control{
+  border: 0px;
+}
+.Dropdown-arrow{
+  border: 0px;
+}
+.carousel .slider-wrapper.axis-horizontal .slider
+{
+  height: 250px;
+  background-color:inherit;
+}
+.AdPage .image-gallery-content{
+  height: 240px;
+}
+.carousel .slide{
+  background-color:inherit;
+}
+.carousel .thumbs-wrapper{
+  border-color: #156dbf;
+  /* margin: 0px !important; */
+  /* margin-top: 5px !important; */
+}
+.carousel .thumb{
+  height: 80px;
+
+}
+.carousel .thumb.selected, .carousel .thumb:hover{
+  border:2px solid #156dbf;
+  padding: 0px
+}
+
+.AdScreen .DeviceName
+{
+  font-size: 20px;
+  width: 100% !important;
+}
+
+.AdPage .fontLeft{
+  text-align: left;
+  /* float: left; */
+}
+.AdPage .fontRight{
+  text-align: left;
+  /* float: right; */
+
+}
+
+.AdPage .image-gallery-image
+{
+  height:  240px;
+  width: 240px;
+  object-fit: scale-down;
+  overflow: hidden;
+}
+
+.AdPage .image-gallery-image .img
+{
+  object-fit: scale-down;
+}
+
+.AdPage .image-gallery-thumbnails {
+  height: 50px !important;
+  width: 50px !important;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+}
+.AdPage .image-gallery-thumbnail {
+  height: 50px !important;
+  width: 50px !important;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+}
+.AdPage .image-gallery-thumbnails-wrapper bottom{
+  height: 50px !important;
+  width: 50px !important;
+}
+
+.GridItemImage{
+  height:  50px;
+  width: 50px;
+  object-fit: scale-down;
+  overflow: hidden;
+}
+
+.deviceDetailsKey{
+  width:30%;
+  padding:10px;
+  text-align: left;
+  font-size:12px;
+  font-family: proxs;
+  height: 25px;
+  margin-bottom: 4px;
+}
+.deviceDetailsValue{
+  width:70%;
+  padding:10px;
+  text-align: left;
+  font-size:12px;
+  vertical-align: top;
+  overflow: hidden;
+  height: 25px;
+margin-bottom: 4px;
+}
+.AdPage .AdTitle
+{
+  font-family: proxs;
+  margin-top: 75px;
+  font-size: 20px;
+  text-align: left;
+  height: 50px;
+}
+.AdPage .AdDescription
+{
+  font-family: proxs;
+  font-size: 15px;
+  text-align: left;
+  height: 100px;
+}
+
+.AdPage .fullLine
+{
+  width: 50%;
+}
+
+.AdPage .specsImg
+{
+  object-fit: scale-down;
+  width: 35px;
+  height: 35px;
+  margin-left: -55%;
+}
+.AdPage .specsText{
+  font-size: 15px;
+  font-family: proxr;
+}
+/* .AdPage .specsText .specsImg{
+  display: inline;
+} */
+.AdScreen .BlueButton{
+  font-family:proxr;
+  background-color: #156dbf;
+  border: 1px solid #156dbf;
+  border-radius: 5px 5px 5px 5px;
+  color:#ffffff;
+  font-size: 120%;
+  height: 40px;
+  width: 100px;
+}
+.AdPage .likeBtn{
+  height: 30px;
+  weight: 30px;
+  margin-top: 20px;
+  float: right;
+  margin-right: 50px;
+}
+
+.bold
+{
+  font-size: 18px;
+  text-align: left;
+  height: 150px;
+  font-weight: 700;
+}
+.AdPage .contactbutton{
+  margin-top:10%;
+  float: left;
+  margin-right: 10%;
+  margin-left:4%;
+  font-family:proxr;
+  background-color: #156dbf;
+  border: 1px solid #156dbf;
+  border-radius: 5px 5px 5px 5px;
+  color:#ffffff;
+  height: 35px;
+  width: 45%;
+}
+.AdPage .buybutton{
+  float: left;
+  margin-right: -2%;
+  margin-top:8%;
+  margin-left:4%;
+  font-family:proxr;
+  background-color: #156dbf;
+  border: 1px solid #156dbf;
+  border-radius: 5px 5px 5px 5px;
+  color:#ffffff;
+  height: 35px;
+  width: 45%;
+
+}
+.AdPage .buttontext{
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  font-size: 80%;
+}
+.AdPage .buttonpic{
+  float: left;
+  objectFit:scale-down;
+  height:60%;
+}
+.AdPage .currency{
+  font-size:120%;
+  color:#342d38;
+}
+.AdPage .price{
+  font-size:170%;
+  color:#342d38;
+}
+.AdPage .pricediv{
+  float: right;
+  margin-right: -20%;
+}
+.AdPage .bottom
+{
+  margin-top: 12px;
+  height: 20px;
+}
+
+.AdPage .userKeys{
+  width:30%;
+  text-align: left;
+  font-size:12px;
+  font-family: proxs;
+}
+.AdPage .userValue{
+  width:70%;
+  text-align: left;
+  font-size:12px;
+  overflow: hidden;
+  font-family: proxr;
+}
+.AdPage .users_details
+{
+  font-size: 20px;
+  width: 100% !important;
+}

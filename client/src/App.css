@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Mada:600');
+@font-face {
+   font-family: 'proxr';
+   src: url('../public/fonts/ProximaNovaRegular.otf');
+}
+@font-face {
+   font-family: 'proxs';
+   src: url('../public/fonts/ProximaNovaSemibold.otf');
+}
+* {font-size: 15px;}
+
+
+
+.App {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.App .Overlay
+{
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+.App .Overlay .AllPages
+{
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.App .Overlay .loading
+{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  height: 200%;
+  width: 100%;
+  background-color: #ffffff99;
+}
+
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.PageBody{
+  display: flex;
+  justify-content: center;
+  margin: 0 10% 0 10%;
+
+}
+.AccountsPageBody{
+  justify-content: center;
+  margin: 0 10% 0 10%;
+}
+.PostPageBody{
+  /* justify-content: center; */
+  margin: 0 10% 0 10%;
+}
+.fontRegular{
+  font-family: proxr;
+}
+
+.fontSemiBold{
+  font-family: proxs;
+  color: #342d38;
+  text-align: left;
+  width: 100%;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

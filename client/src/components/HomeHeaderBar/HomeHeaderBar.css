@@ -1,0 +1,41 @@
+.navbar>.container{
+  height: 40px !important;
+}
+
+.navbar>.container-fluid{
+  height: 40px !important;
+}
+
+.panel-heading a:after {
+    font-family:'Glyphicons Halflings';
+    content:"\2212";
+    float: right;
+    color: grey;
+}
+.panel-heading a.collapsed:after {
+    content:"\2b";
+}
+
+.panel-heading a:after {
+  font-family:'Glyphicons Halflings';
+  content:"\2212";
+  float: right;
+  color: grey;
+}
+.panel-heading a.collapsed:after {
+  content:"\2b";
+}
+.navbar>.container, .navbar>.container-fluid{
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: flex-start;
+}
+.HeaderBar .Dropdown-control{
+background-color: #156dbf;
+color:white;
+}
+.HeaderBar .Dropdown-menu{
+  width:150%;
+}

@@ -3,9 +3,16 @@
   "version": "1.0.0",
   "description": "E-Commerce portal",
   "main": "server.js",
+  "engines": {
+    "node": "10.3.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js ",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail  \"yarn client\" \"yarn server\""
   },
   "author": "sheeraz",
   "license": "ISC",
@@ -13,6 +20,7 @@
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.17.2",
     "cloudinary": "^1.9.0",
+    "concurrently": "^4.1.0",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.7",
     "express": "^4.15.3",
@@ -29,7 +37,8 @@
     "path": "^0.12.7",
     "request": "^2.83.0",
     "sendgrid": "^5.2.0",
-    "sightengine": "^1.1.1"
+    "sightengine": "^1.1.1",
+    "yarn": "^1.12.3"
   },
   "repository": {
     "type": "git",

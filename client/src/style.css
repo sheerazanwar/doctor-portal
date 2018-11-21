@@ -1,0 +1,18 @@
+@font-face {
+   font-family: 'proxr';
+   src: url('../../../public/fonts/ProximaNovaRegular.otf') format('otf');
+}
+@font-face {
+   font-family: 'proxs';
+   font-weight: 400;
+   src: url('../../../public/fonts/ProximaNovaSemibold.otf') format('otf');
+}
+/* @font-face {
+   font-family: 'proxr';
+   src: url('../../../public/fonts/miriam-libre-v2-latin-regular.eot');
+   src: url('../../../public/fonts/Miriam.eot?#iefix') format('embedded-opentype'),
+       url('../../../public/fonts/miriam-libre-v2-latin-regular.eot') format('woff2'),
+       url('../../../public/fonts/miriam-libre-v2-latin-regular.woff') format('woff'),
+       url('../../../public/fonts/miriam-libre-v2-latin-regular.ttf') format('truetype'),
+       url('../../../public/fonts/miriam-libre-v2-latin-regular.svg') format('svg');
+} */

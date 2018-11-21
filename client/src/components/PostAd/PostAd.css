@@ -1,0 +1,151 @@
+.PostAd{
+  text-align: left;
+  font-family: proxr;
+}
+.PostPage .SemiBold{
+  font-family: proxs;
+  color: #342d38;
+}
+.PostPage .headerbar{
+  display: flex;
+  margin-bottom:3%;
+  margin-top:5%;
+}
+.PostPage .postAdButton{
+  font-family:proxr;
+  background-color: #156dbf;
+  border: 1px solid #156dbf;
+  border-radius: 5px 5px 5px 5px;
+  color:#ffffff;
+  font-size: 130%;
+  height: 40px;
+  width: 170px;
+  float: right;
+  margin-bottom: 5%;
+  margin-top: -2%;
+  /* margin-right: 2%; */
+}
+.PostPage .submit{
+  font-size:160%;
+  margin-top:-3px;
+  margin-left: 30%;
+}
+.PostPage .backBtn{
+  /* font-size: 25px; */
+  font-size: 120%;
+}
+.PostPage .Headings{
+  font-size: 150%;
+  color:white;
+  padding: 15px 0px 0px 10px;
+  /* height: 100%; */
+}
+.images{
+  height: 20px;
+}
+.PostPage .titleAccordian
+{
+  padding: 20px;
+  font-size: 20px;
+  background-color: #156dbf;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.PostAdForm{
+/* border: 1px solid #342d38; */
+height: 100%;
+}
+.MainAccordion{
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.AccordionForm{
+  margin-top: 2%;
+}
+.PostAdSteps{
+  font-family: proxs;
+  color: #342d38;
+  text-align: left;
+}
+.TwoColumns{
+  display: flex;
+  /* justify-content: center; */
+}
+.PictureColum{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.PostPage .leftSide
+{ margin-top: 2%;
+  width: 50%;
+}
+
+.PostPage .rightSide
+{ margin-top: 2%;
+  width: 50%;
+}
+.PostPage .full
+{ margin-top: 2%;
+  width: 100%;
+}
+.PostPage .hints{
+  color: #AAAAAA;
+  font-size:80%;
+}
+.PostPage .name{
+  margin-left: 1px;
+}
+.Formtitle{
+  font-family: proxs;
+  color: #342d38;
+  font-size: 150%;
+}
+.lightitles{
+  font-family: proxr;
+  color: #AAAAAA;
+  font-size: 100%;
+}
+
+.inputsdropdown{
+width: 80%;
+border: 1px solid #dbd6d6;
+border-radius: 5px 5px 5px 5px;
+height: 35px;
+/* color: #342d38; */
+}
+.completearea{
+  width: 90%;
+  height: 35px;
+  border: 1px solid #dbd6d6;
+  border-radius: 5px 5px 5px 5px;
+}
+.textarea{
+  width: 90%;
+  border: 1px solid #dbd6d6;
+  border-radius: 5px 5px 5px 5px;
+}
+/* .PostPage .picture_area > input
+{
+display: none;
+} */
+.fle{
+  height:70px;
+  cursor:pointer;
+}
+.react-sanfona-item-body
+{
+  background-color: white;
+}
+.react-sanfona-item-title	{
+
+}
+.arrow{
+  height: 20px;
+  float:right;
+  margin-top: -2%;
+}
+.PostPage .input{
+  width: 70%;
+  height:30px;
+}
