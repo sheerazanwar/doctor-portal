@@ -125,6 +125,29 @@ height: 35px;
   border: 1px solid #dbd6d6;
   border-radius: 5px 5px 5px 5px;
 }
+.ref_date{
+  width: 40%;
+  border: 1px solid #dbd6d6;
+  /* border-radius: 5px 5px 5px 5px; */
+  border-top:0px;
+  border-left:0px;
+  border-right:0px;
+}
+.name_{
+  width: 140%;
+  border: 1px solid #dbd6d6;
+  /* border-radius: 5px 5px 5px 5px; */
+  border-top:0px;
+  border-left:0px;
+  border-right:0px;
+}
+.full_lines{
+  width: 75%;
+  border: 1px solid #dbd6d6;
+  border-top:0px;
+  border-left:0px;
+  border-right:0px;
+}
 /* .PostPage .picture_area > input
 {
 display: none;

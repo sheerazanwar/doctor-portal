@@ -228,7 +228,6 @@ class HomeHeaderBar extends Component {
 
         <Nav style={navPro}>
           <Image style={navProfileLogo} src="/img/contact.png"  />
-        {this.toshow} 
 
         </Nav>
 

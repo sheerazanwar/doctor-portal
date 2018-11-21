@@ -104,66 +104,7 @@ function onChangePhysical(e) {
 }
 
 
-const BarebonesGeoInput = ({
-  addressInput,
-  loadingGeoDestination,
-  geoDestinationInput,
-  onPredictionClick,
-  predictions,
-}) => (
-  <div>
-    <input className={"input"} {...addressInput} />
-
-    {loadingGeoDestination && <div style={{ marginTop: 10 }}>Loading destination ...</div>}
-
-    <hr />
-
-    <div>
-      <div>
-        {!!predictions && !!predictions.length ? predictions.map((prediction, index) => (
-          <div className={"locationsdrop"} key={index} >
-          <span className={"locationsdropdown"} onClick={() => onPredictionClick(index)}>
-            {JSON.stringify(prediction.description)}
-            </span>
-          </div>
-        )) : ''}
-      </div>
-    </div>
-
-  </div>
-);
-
-BarebonesGeoInput.propTypes = {
-  addressInput: PropTypes.shape({
-    onChange: PropTypes.func.isRequired,
-    value: PropTypes.string,
-  }).isRequired,
-  loadingGeoDestination: PropTypes.bool.isRequired,
-  geoDestinationInput: PropTypes.shape({
-    value: PropTypes.object,
-  }).isRequired,
-
-  onPredictionClick: PropTypes.func.isRequired,
-  // onChange: () => {this.searcharea = this.state.geoDestination },
-  predictions: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    label: PropTypes.node,
-    onClick: PropTypes.func,
-  })).isRequired,
-};
-
-const DemoInput = createGeoInput(BarebonesGeoInput);
-
-
 class PostAd extends Component {
-
-  state = {
-      open: false,
-      address: '',
-      geoDestination: undefined,
-    }
-    onAddressChange = value => this.setState({ address: value })
-    onGeoDestinationChange = value => this.setState({ geoDestination: value })
 
 
   brandsData = []
@@ -812,16 +753,7 @@ componentDidUpdate(){
   <label className={"labels"}>
   Your Address
   </label> <br />
-  <DemoInput style={{borderRadius:"5px 5px 5px 5px", width:"50%"}}
-  addressInput={{
-  onChange: this.onAddressChange,
-  value: this.state.address,
-  }}
-  geoDestinationInput={{
-  onChange: this.onGeoDestinationChange,
-  value: this.state.geoDestination,
-  }}
-  />
+
   <p className={'hints'}>Depends on Package</p>
 
   </div>
@@ -845,6 +777,7 @@ componentDidUpdate(){
 
         <AccordionItem className={'PostAdSteps'} title={<div className={'fontSemiBold titleAccordian'} onExpand={this.addlocation}>Verify Ad</div>}>
         <form className={'AccordionForm'}>
+
         <div className="leftSide">
         {this.verify_display}
         </div>
@@ -867,83 +800,87 @@ componentDidUpdate(){
       <div className={'headerbar'}>
       <Link to={"/"}>
         <span className="SemiBold backBtn">Back to Home</span>
-        </Link>
-        <span className="SemiBold submit">SUBMIT AN AD</span>
+      </Link>
 
+      <div className="SemiBold submit">Patients Details</div>
 
       </div>
       <div className={'PostAdForm'}>
       <Accordion className={'MainAccordion'} openNextAccordionItem={true}>
 
-      <AccordionItem className={'PostAdSteps'} title={<div className={'fontSemiBold titleAccordian'}>Necessary Requirements</div>} expanded={true} >
+      <AccordionItem className={'PostAdSteps'} title={<div className={'fontSemiBold titleAccordian'}>Patient's Data </div>} expanded={true} >
       <form className={'AccordionForm'}>
 
-      <div className={'TwoColumns'}>
-
-      <div className="leftSide">
-      <label className={'Formtitle'}>
-      Category
-      </label>
-      <p><select name="category" onClick={this.handleChange} className={'inputsdropdown'}>
-      <option></option>
-      {this.categoriesData}
-       </select></p>
-       <p className={'hints'}>Mobile Phones Tablets e.t.c.</p>
-
-      </div>
-
-      <div className="rightSide">
-
-      <label className={'Formtitle'}>
-      Brands
-      </label>
-      <p><select name="brand_id" onChange={this.handleChangebrands} className={'inputsdropdown'}>
-      <option></option>
-      {this.brandsData}
-       </select></p>
-       <p className={'hints'}>Apple, Samsung e.t.c</p>
-      </div>
-
-      </div>
-      <div className={'TwoColumns'}>
-
-      <div className="leftSide">
-      <label className={'Formtitle'}>
-      Device Model
-      </label>
-      <p><select name="model" onClick={this.handleChange} className={'inputsdropdown'} placeholder={this.mycurrency}>
-      {this.modelsData}
-       </select></p>
-       <p className={'hints'}>Mobile Phone, Tablets e.t.c</p>
-
-      </div>
-
-      <div className="rightSide">
-
-      <label className={'Formtitle'}>
-      IMEI
-      </label>
-      <p><input type="number" min="14" max="20" name="imei" onChange={this.handleChange} className={'inputsdropdown'}/></p>
-      <p className={'hints'}>Minimum 14 characters. (optional)</p>
-      </div>
-
-      </div>
-
-      <div className={'TwoColumns'}>
-
-      {this.title}
-
-      </div>
 
       <div className={'TwoColumns'}>
 
       <div className="leftSide">
+      <label className={'Formtitle'}>
+      Reference no: &nbsp;
+      </label>
+      <textarea type="text" rows="1" cols="10" name="ref_no" onChange={this.handleChange} className={'ref_date'}/>
+
+      <p>
+      <label className={'Formtitle'}>
+      Name: &nbsp;
+      </label>
+      <textarea type="text" rows="1" cols="50" name="name" onChange={this.handleChange} className={'name_'}/>
+      </p>
+
+      </div>
+
+      <div className="rightSide" style={{marginLeft:"40%"}}>
 
       <label className={'Formtitle'}>
-      Price
+      Date: &nbsp;
       </label>
-      <p><input type="number" min="1" name="price" onChange={this.handleChange} placeholder={this.mycurrency} className={'inputsdropdown'}/></p>
-        <p className={'hints'}>You Can Change Your Currency In Account Settings</p>
+      <textarea type="text" rows="1" cols="10" name="date" onChange={this.handleChange} className={'ref_date'}/>
+      <p>
+      <label className={'Formtitle'}>
+      Age: &nbsp;
+      </label>
+      <textarea type="text" rows="1" cols="10" name="age" onChange={this.handleChange} className={'ref_date'}/>
+      </p>
+      </div>
+
+      </div>
+      <div className={'TwoColumns'}>
+
+      <div className="full">
+      <label className={'Formtitle'}>
+      General History: &nbsp;
+      </label>
+      <textarea type="text" rows="1" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
+      </div>
+
+      </div>
+      <div className={'TwoColumns'}>
+
+      <div className="full">
+      <label className={'Formtitle'}>
+      Chief Complaint: &nbsp;
+      </label>
+      <textarea type="text" rows="1" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
+      </div>
+
+      </div>
+      <div className={'TwoColumns'}>
+
+      <div className="full">
+      <label className={'Formtitle'}>
+      Diagnosis: &nbsp;
+      </label>
+      <textarea type="text" rows="1" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
+      </div>
+
+      </div>
+      <div className={'TwoColumns'}>
+
+      <div className="full">
+      <label className={'Formtitle'}>
+      Advice: &nbsp;
+      </label>
+      <textarea type="text" rows="2" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
       </div>
 
       </div>
@@ -952,118 +889,18 @@ componentDidUpdate(){
 
       <div className="full">
       <label className={'Formtitle'}>
-      Ad Description
+      Treatment: &nbsp;
       </label>
-      <p><textarea type="text" rows="4" cols="50" name="description" onChange={this.handleChange} className={'textarea'}/></p>
-        <p className={'hints'}>Max 3000 Characters</p>
+      <textarea type="text" rows="2" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
       </div>
-
-      </div>
-
-      <div className={'TwoColumns'}>
-
-      <div className="leftSide">
-      <label className={'Formtitle'}>
-      Color
-      </label>
-      <p><select name="color" onClick={this.handleChange} className={'inputsdropdown'}>
-      <option></option>
-      {this.colorData}
-       </select></p>
-      </div>
-
-      <div className="rightSide">
-
-      <label className={'Formtitle'}>
-      Storage
-      </label>
-      <p><select name="storage" onClick={this.handleChange} className={'inputsdropdown'}>
-      <option></option>
-      {this.storageData}
-       </select></p>
-      </div>
-
-      </div>
-
-      <div className={'TwoColumns'}>
-
-      <div className="leftSide">
-      <label className={'Formtitle'}>
-      Condition
-      </label>
-      <p><select name="condition" onClick={this.handleChange} className={'inputsdropdown'}>
-      <option></option>
-      {this.conditionsData}
-       </select></p>
-      </div>
-
-      <div className="rightSide">
-
-      <label className={'Formtitle'}>
-      Age
-      </label>
-      <p><select name="age_selected" onClick={this.handleChange} className={'inputsdropdown'}>
-      <option></option>
-      {this.agenames}
-       </select></p>
-      </div>
-
-      </div>
-
-      <div className={'PictureColum'}>
-
-      <div className={'picture_area'}>
-      <label for="file">
-      <input id="userFile" type="file" style={{display:"none"}} name="userFile" accept=".png,.gif,.jpeg,.jpg" onChange={(e) =>this.handleFileInput(e)} />
-      <Image src="/img/camera.png" className={'fle'}/>
-      </label>
-
-      </div>
-
-      <p className={'hints'}>Ads with Photos Sell Faster</p>
-
-      </div>
-
-      </form>
-
-      <Image src="/img/arr-down.png" className={'arrow'} />
-
-      </AccordionItem>
-
-      <AccordionItem className={'PostAdSteps'} title={<div className={'fontSemiBold titleAccordian'}>Functional and Physical Condition</div>}>
-      <form className={'AccordionForm'}>
-      <div className="rightSide">
-      <label className={'Formtitle'}>
-      Functional or Physical Conditions
-      </label>
-      <label>
-      Does The Mobie Switch On &nbsp;
-      <Checkbox name="brands" onChange={phonedeadcheck} type="checkbox" />
-      </label> <br />
-      <div className={'lightitles'}> Please Tick/Untick Checkboxes </div>
-      {this.physicalData}
 
       </div>
       </form>
-      <Image src="/img/arr-down.png" className={'arrow'}/>
-      </AccordionItem>
-
-      <AccordionItem className={'PostAdSteps'} title={<div className={'fontSemiBold titleAccordian'}>Accessories (Optional)</div>}>
-      <form className={'AccordionForm'}>
-      <div className="rightSide">
-      <label className={'Formtitle'}>
-      Available Accessories
-      </label>
-      <div className={'lightitles'}> Please Tick/Untick Checkboxes </div>
-      {this.accessoriesData}
-      </div>
-      </form>
-
       </AccordionItem>
 
       </Accordion>
-      <button className={"postAdButton"} onClick={this.handleButton.bind(this)} >
-      Post Ad
+      <button className={"postAdButton"} >
+      Submit Details
       </button>
 
       {this.displaylocaccord}
