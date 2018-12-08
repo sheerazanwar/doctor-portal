@@ -6,14 +6,12 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Accordion, AccordionItem } from 'react-sanfona';
 import FileInput  from 'react-file-input';
 import Checkbox from 'rc-checkbox';
-import { createGeoInput, DefaultGeoInput } from 'react-geoinput';
 import PropTypes from 'prop-types';
 
 var url = require('url');
 import './PostAd.css';
 
 const manuCallback = function(object) {}
-const SimpleInput = createGeoInput(DefaultGeoInput);
 const fetch = require('node-fetch');
 const urlObj = url.parse(document.location.href, true);
 const port = "" ;
@@ -125,6 +123,27 @@ class PostAd extends Component {
   file = []
   adtitle = []
   title = []
+
+  add_medicines = []
+  add_medicines1 = []
+  add_medicines2 = []
+  add_medicines3 = []
+  add_medicines4 = []
+  add_medicines5 = []
+  add_form = []
+  medicine_forms = [
+    {"name":"Tablet", "value": 1},
+    {"name":"Capsule", "value": 2},
+    {"name":"Drops", "value":3},
+    {"name":"inhalers", "value":4},
+    {"name":"Syrup", "value":5},
+    {"name":"Injections", "value":5},
+    {"name":"Implants", "value":6},
+    {"name":"Patches", "value":7},
+    {"name":"Ointment", "value":8},
+    {"name":"Cream", "value":9}
+  ];
+  medicine_formsdata = []
   age = [
     {"name":"Brand New", "count": -1},
     {"name":"Less Than a Year", "count": 0},
@@ -169,121 +188,135 @@ class PostAd extends Component {
     })
   }
 
-  getCond_Acc_phy()
-  {
-    EventBus.publish("getAccessories");
-    EventBus.publish("getPhysical");
-    EventBus.publish("getConditions");
-    console.log("conditions in postad.js")
-    var conditions;
-    var accessories;
-    var physical;
+  data_for_priscription(){
 
-      console.log("conditions in postad.js ((IF))")
-      conditions = JSON.parse(localStorage.getItem("Conditions"))
-      accessories = JSON.parse(localStorage.getItem("Accessories"))
-      physical = JSON.parse(localStorage.getItem("PhysicalConditions"))
-      console.log("conditions", conditions);
-      console.log("accessories", accessories);
-      console.log("physical", JSON.parse(localStorage.getItem("PhysicalConditions")));
+        var ag = []
+        console.log(this.medicine_forms);
+        this.medicine_forms.forEach(function(i,idx,n){
+          EventBus.publish("showLoading")
 
-        var con = []
-        var acc = []
-        var phy = []
-
-        conditions.forEach(function(i,idx,n){
-          con.push(
-          <option className="name" value={i._id}>
-          {i.title}
+          ag.push(
+          <option className="name" value={i.name}>
+          {i.name}
           </option>
           )
+
         })
-        accessories.forEach(function(i,idx,n){
-          acc.push(
-            <p><label >
-            <Checkbox name="my-checkbox" onChange={onChangeaccess} value={i._id} />
-            <span className="name"> {i.title}</span>
-            </label></p>
-          )
-        })
-        physical.forEach(function(i,idx,n){
-          phy.push(
-            <p><label >
-            <Checkbox name="my-checkbox" onChange={onChangePhysical} value={i._id} />
-            <span className="name"> {i.title}</span>
-            </label></p>
-          )
-        })
-        this.physicalData = phy
-        this.accessoriesData = acc
-        this.conditionsData = con
+        console.log(this.medicine_formsdata);
+        this.medicine_formsdata = ag
+        EventBus.publish("stopLoading")
+
+  }
+
+
+  getCond_Acc_phy()
+  {
+    // EventBus.publish("getAccessories");
+    // EventBus.publish("getPhysical");
+    // EventBus.publish("getConditions");
+    // console.log("conditions in postad.js")
+    // var conditions;
+    // var accessories;
+    // var physical;
+    //
+    //   console.log("conditions in postad.js ((IF))")
+    //   conditions = JSON.parse(localStorage.getItem("Conditions"))
+    //   accessories = JSON.parse(localStorage.getItem("Accessories"))
+    //   physical = JSON.parse(localStorage.getItem("PhysicalConditions"))
+    //   console.log("conditions", conditions);
+    //   console.log("accessories", accessories);
+    //   console.log("physical", JSON.parse(localStorage.getItem("PhysicalConditions")));
+    //
+    //     var con = []
+    //     var acc = []
+    //     var phy = []
+    //
+    //     accessories.forEach(function(i,idx,n){
+    //       acc.push(
+    //         <p><label >
+    //         <Checkbox name="my-checkbox" onChange={onChangeaccess} value={i._id} />
+    //         <span className="name"> {i.title}</span>
+    //         </label></p>
+    //       )
+    //     })
+    //     physical.forEach(function(i,idx,n){
+    //       phy.push(
+    //         <p><label >
+    //         <Checkbox name="my-checkbox" onChange={onChangePhysical} value={i._id} />
+    //         <span className="name"> {i.title}</span>
+    //         </label></p>
+    //       )
+    //     })
+    //     this.physicalData = phy
+    //     this.accessoriesData = acc
+    //     this.conditionsData = con
   }
 
   EnumsReceived()
   {
-
-    var enums;
-
-    if (localStorage.getItem("enums") != null)
-    {
-
-      enums = JSON.parse(localStorage.getItem("enums"))
-
-      console.log("enums", JSON.parse(localStorage.getItem("enums")));
-
-        // var category = this.enums.category;
-        // console.log("Category Details", category);
-        var category = enums.category
-        console.log("categories" , category)
-        var color = enums.color
-        console.log("colors" , color)
-        var storage = enums.storage
-        console.log("storage" , storage)
-        var cc = []
-        var col = []
-        var sto = []
-        var ag = []
-
-        category.forEach(function(i,idx,n){
-          cc.push(
-          <option className="name" value={i.name} >
-          <img src="i.image" class="images"/>
-          {i.name}
-          </option>
-          )
-
-        })
-        color.forEach(function(i,idx,n){
-          col.push(
-          <option className="name" value={i}>
-          {i}
-          </option>
-          )
-
-        })
-        storage.forEach(function(i,idx,n){
-          sto.push(
-          <option className="name" value={i + " GB"} >
-          {i} GB
-          </option>
-          )
-
-        })
-        this.age.forEach(function(i,idx,n){
-          ag.push(
-          <option className="name" value={i.count}>
-          {i.name}
-          </option>
-          )
-
-        })
-
-        this.categoriesData = cc
-        this.colorData = col
-        this.storageData = sto
-        this.agenames = ag
-        console.log("categories received are",this.categoriesData);
-    }
+    //
+    // var enums;
+    //
+    // if (localStorage.getItem("enums") != null)
+    // {
+    //
+    //   enums = JSON.parse(localStorage.getItem("enums"))
+    //
+    //   console.log("enums", JSON.parse(localStorage.getItem("enums")));
+    //
+    //     // var category = this.enums.category;
+    //     // console.log("Category Details", category);
+    //     var category = enums.category
+    //     console.log("categories" , category)
+    //     var color = enums.color
+    //     console.log("colors" , color)
+    //     var storage = enums.storage
+    //     console.log("storage" , storage)
+    //     var cc = []
+    //     var col = []
+    //     var sto = []
+    //     var ag = []
+    //
+    //     category.forEach(function(i,idx,n){
+    //       cc.push(
+    //       <option className="name" value={i.name} >
+    //       <img src="i.image" class="images"/>
+    //       {i.name}
+    //       </option>
+    //       )
+    //
+    //     })
+    //     color.forEach(function(i,idx,n){
+    //       col.push(
+    //       <option className="name" value={i}>
+    //       {i}
+    //       </option>
+    //       )
+    //
+    //     })
+    //     storage.forEach(function(i,idx,n){
+    //       sto.push(
+    //       <option className="name" value={i + " GB"} >
+    //       {i} GB
+    //       </option>
+    //       )
+    //
+    //     })
+    //     this.age.forEach(function(i,idx,n){
+    //       ag.push(
+    //       <option className="name" value={i.count}>
+    //       {i.name}
+    //       </option>
+    //       )
+    //
+    //     })
+    //
+    //     this.categoriesData = cc
+    //     this.colorData = col
+    //     this.storageData = sto
+    //     this.agenames = ag
+    //     console.log("categories received are",this.categoriesData);
+    // }
 
 
   }
@@ -307,8 +340,6 @@ class PostAd extends Component {
     port = ""
     this.port = ""
   }
-  this.getCond_Acc_phy();
-
 }
 handleFileInput = (e) => {
   console.log("filename ::", e.target.files[0]);
@@ -342,63 +373,63 @@ handleChangebrands = (e) => {
 
 ModelsReceived()
 {
-  console.log("i just received brand")
-  if (localStorage.getItem("Models") != null)
-  {
-    this.testmodels()
-
-  }
+  // console.log("i just received brand")
+  // if (localStorage.getItem("Models") != null)
+  // {
+  //   this.testmodels()
+  //
+  // }
 
 }
 testmodels(){
-
-  EventBus.publish("showLoading")
-  var models;
-  console.log("models", JSON.parse(localStorage.getItem("Models")));
-    var mod = []
-
-    models = JSON.parse(localStorage.getItem("Models"))
-
-    models.forEach(function(i,idx,n){
-      mod.push(
-      <option className="name" value={i._id}>
-      {i.DeviceName}
-      </option>
-      )
-    })
-
-    this.modelsData = mod
-    EventBus.publish("stopLoading")
-    this.gettitle();
+  //
+  // EventBus.publish("showLoading")
+  // var models;
+  // console.log("models", JSON.parse(localStorage.getItem("Models")));
+  //   var mod = []
+  //
+  //   models = JSON.parse(localStorage.getItem("Models"))
+  //
+  //   models.forEach(function(i,idx,n){
+  //     mod.push(
+  //     <option className="name" value={i._id}>
+  //     {i.DeviceName}
+  //     </option>
+  //     )
+  //   })
+  //
+  //   this.modelsData = mod
+  //   EventBus.publish("stopLoading")
+  //   this.gettitle();
 }
 gettitle = () =>{
-  var models = JSON.parse(localStorage.getItem("Models"))
-  console.log("models",models);
-  if(models != undefined){
-  var name = models[0]['Brand']['brandName'];
-  console.log("models",name);
-  this.adtitle = name;
-  EventBus.publish("showLoading")
-  if(this.adtitle != ''){
-
-    var celltitle =
-    <div className="full">
-    <label className={'Formtitle'}>
-    Ad Title
-    </label>
-    <p >{this.adtitle} </p>
-    </div>
-
-    this.title = celltitle
-    console.log("this.adtitle",this.adtitle);
-
-  }
-  EventBus.publish("stopLoading")
-
-}
-this.setState((state, props) => {
-return {counter: state.counter + props.step};
-})
+//   var models = JSON.parse(localStorage.getItem("Models"))
+//   console.log("models",models);
+//   if(models != undefined){
+//   var name = models[0]['Brand']['brandName'];
+//   console.log("models",name);
+//   this.adtitle = name;
+//   EventBus.publish("showLoading")
+//   if(this.adtitle != ''){
+//
+//     var celltitle =
+//     <div className="full">
+//     <label className={'Formtitle'}>
+//     Ad Title
+//     </label>
+//     <p >{this.adtitle} </p>
+//     </div>
+//
+//     this.title = celltitle
+//     console.log("this.adtitle",this.adtitle);
+//
+//   }
+//   EventBus.publish("stopLoading")
+//
+// }
+// this.setState((state, props) => {
+// return {counter: state.counter + props.step};
+// })
 }
 
 
@@ -459,9 +490,8 @@ handleButton = (event) => {
     if (error) throw new Error(error);
     if(body){
       console.log("displaying next accordion")
-      EventBus.publish("showLoading")
+      // EventBus.publish("showLoading")
       this.displaylocaccord = this.locationaccordion
-      EventBus.publish("stopLoading")
     }
     if (body.result)
     {
@@ -576,14 +606,10 @@ state = {
   }
 
   componentDidMount() {
-    this.brandsReceived();
-    this.EnumsReceived();
-    console.log("your currency is",localStorage.getItem('currency'))
-    this.mycurrency = "Your Currency is " + '' + localStorage.getItem('currency')
-    EventBus.on("brandsReceived", this.brandsReceived.bind(this));
-    EventBus.on("ModelsReceived", this.ModelsReceived.bind(this));
+    this.data_for_priscription();
 
-    // EventBus.publish("ModelsReceived");
+    this.add_medicines = this.details_form
+
 
   }
 componentDidUpdate(){
@@ -632,9 +658,8 @@ componentDidUpdate(){
       if (error) throw new Error(error);
       if(body){
         console.log("verifications")
-        EventBus.publish("showLoading")
+        // EventBus.publish("showLoading")
         this.displayverifyaccord = this.verifyaccordion
-        EventBus.publish("stopLoading")
 
       }
       if (body.result)
@@ -690,7 +715,7 @@ componentDidUpdate(){
   }
 
   verify_your_content (){
-    EventBus.publish("showLoading")
+    // EventBus.publish("showLoading")
     var data = this.forverification;
     console.log("in verify_your_content ",data);
 
@@ -734,61 +759,164 @@ componentDidUpdate(){
     return {counter: state.counter + props.step};
     })
     console.log("display created",this.verify_display)
-    EventBus.publish("stopLoading")
 
   }
 
   addlocation(){
     console.log("location accordion expanded")
   }
+  submitdetails =()=>{
+    EventBus.publish("showLoading")
+
+      this.add_medicines = this.medicine_view
+      console.log(this.add_medicines);
+      EventBus.publish("stopLoading")
+  }
+  addmore = () =>{
+    EventBus.publish("showLoading")
+      if(this.add_medicines1 == undefined && this.add_medicines1 == ''){
+        this.add_medicines1 = this.medicine_view
+      }else if(this.add_medicines1 != undefined && this.add_medicines1 != ''){
+        this.add_medicines2 = this.medicine_view
+      }else if(this.add_medicines2 != undefined && this.add_medicines2 != ''){
+        this.add_medicines3 = this.medicine_view
+      }else if(this.add_medicines3 != undefined && this.add_medicines3 != ''){
+        this.add_medicines4 = this.medicine_view
+      }else if(this.add_medicines4 != undefined && this.add_medicines4 != ''){
+        this.add_medicines5 = this.medicine_view
+      }
+      console.log(this.add_medicines);
+      EventBus.publish("stopLoading")
+  }
 
 
+  medicine_view =
+  <span>
+  <div className={'TwoColumns'}>
 
-  locationaccordion = <div>
-  <Accordion className={'MainAccordion'} >
+  <div className="full">
+  <label className={'Formtitle'} style={{marginRight: "100%"}}>
+  Priscription: &nbsp;
+  </label>
 
-  <AccordionItem className={'PostAdSteps'} title={<div className={'fontSemiBold titleAccordian'} onExpand={this.addlocation}>Insert Location</div>}>
-  <form className={'AccordionForm'}>
-  <div className="leftSide">
-  <label className={"labels"}>
-  Your Address
-  </label> <br />
+  <div>
+  <select name="medicine_form" onClick={this.handleChange} className={'inputsdropdown'}>
+  <option></option>
+  {this.medicine_formsdata}
+   </select>
+   <textarea type="text" rows="1" cols="30" name="medicine_name" onChange={this.handleChange} placeholder="Medicine Name" className={'medicine_lines'}/>
+   <textarea type="text" rows="1" cols="30" name="medicine_dosage" onChange={this.handleChange} placeholder="Medicine Dosage" className={'medicine_lines2'}/>
 
-  <p className={'hints'}>Depends on Package</p>
-
+   </div>
   </div>
 
-
-  <div className="rightSide">
-
   </div>
-
-  </form>
-  </AccordionItem>
-
-  </Accordion>
-  <button className={"postAdButton"} onClick={this.postbylocation}>
-  Update Location
+  <button className={"postAdButton"} onClick={this.addmore}>
+  Add More
   </button>
-  </div>
-
-  verifyaccordion =  <span>
-        <Accordion className={'MainAccordion'} >
-
-        <AccordionItem className={'PostAdSteps'} title={<div className={'fontSemiBold titleAccordian'} onExpand={this.addlocation}>Verify Ad</div>}>
-        <form className={'AccordionForm'}>
-
-        <div className="leftSide">
-        {this.verify_display}
-        </div>
-        </form>
-        </AccordionItem>
-
-        </Accordion>
-        <button className={"postAdButton"} onClick={this.verifyAdd}>
-        Verify Ad
-        </button>
         </span>
+
+
+
+    details_form =
+    <span>
+    <form className={'AccordionForm'}>
+
+
+    <div className={'TwoColumns'}>
+
+    <div className="leftSide">
+    <label className={'Formtitle'}>
+    Reference no: &nbsp;
+    </label>
+    <textarea type="text" rows="1" cols="10" name="ref_no" onChange={this.handleChange} className={'ref_date'}/>
+
+
+    </div>
+
+
+    <div className="rightSide" style={{marginLeft:"40%"}}>
+
+    <label className={'Formtitle'}>
+    Date: &nbsp;
+    </label>
+    <textarea type="text" rows="1" cols="10" name="date" onChange={this.handleChange} className={'ref_date'}/>
+
+    <br />
+    <label className={'Formtitle'} style={{marginLeft:"-20%"}}>
+    Age: &nbsp;
+    </label>
+    <textarea type="text" rows="1" cols="10" name="age" onChange={this.handleChange} className={'ref_date'}/>
+    </div>
+
+    </div>
+    <div className={'full'}>
+
+    <label className={'Formtitle'}>
+    Name:
+    </label>
+    <textarea type="text" rows="1" name="name" onChange={this.handleChange} className={'full_lines'}/>
+    </div>
+
+    <div className={'TwoColumns'}>
+
+    <div className="full">
+    <label className={'Formtitle'}>
+    General History: &nbsp;
+    </label>
+    <textarea type="text" rows="1" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
+    </div>
+
+    </div>
+    <div className={'TwoColumns'}>
+
+    <div className="full">
+    <label className={'Formtitle'}>
+    Chief Complaint: &nbsp;
+    </label>
+    <textarea type="text" rows="1" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
+    </div>
+
+    </div>
+    <div className={'TwoColumns'}>
+
+    <div className="full">
+    <label className={'Formtitle'}>
+    Diagnosis: &nbsp;
+    </label>
+    <textarea type="text" rows="1" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
+    </div>
+
+    </div>
+    <div className={'TwoColumns'}>
+
+    <div className="full">
+    <label className={'Formtitle'}>
+    Advice: &nbsp;
+    </label>
+    <textarea type="text" rows="2" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
+    </div>
+
+    </div>
+
+    <div className={'TwoColumns'}>
+
+    <div className="full">
+    <label className={'Formtitle'}>
+    Treatment: &nbsp;
+    </label>
+    <textarea type="text" rows="2" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
+    </div>
+
+    </div>
+
+
+    </form>
+
+    <button className={"postAdButton"} onClick={this.submitdetails}>
+    Submit Details
+    </button>
+    </span>
 
     render(){
 
@@ -806,108 +934,13 @@ componentDidUpdate(){
 
       </div>
       <div className={'PostAdForm'}>
-      <Accordion className={'MainAccordion'} openNextAccordionItem={true}>
 
-      <AccordionItem className={'PostAdSteps'} title={<div className={'fontSemiBold titleAccordian'}>Patient's Data </div>} expanded={true} >
-      <form className={'AccordionForm'}>
-
-
-      <div className={'TwoColumns'}>
-
-      <div className="leftSide">
-      <label className={'Formtitle'}>
-      Reference no: &nbsp;
-      </label>
-      <textarea type="text" rows="1" cols="10" name="ref_no" onChange={this.handleChange} className={'ref_date'}/>
-
-      <p>
-      <label className={'Formtitle'}>
-      Name: &nbsp;
-      </label>
-      <textarea type="text" rows="1" cols="50" name="name" onChange={this.handleChange} className={'name_'}/>
-      </p>
+      {this.add_medicines}
 
       </div>
 
-      <div className="rightSide" style={{marginLeft:"40%"}}>
-
-      <label className={'Formtitle'}>
-      Date: &nbsp;
-      </label>
-      <textarea type="text" rows="1" cols="10" name="date" onChange={this.handleChange} className={'ref_date'}/>
-      <p>
-      <label className={'Formtitle'}>
-      Age: &nbsp;
-      </label>
-      <textarea type="text" rows="1" cols="10" name="age" onChange={this.handleChange} className={'ref_date'}/>
-      </p>
-      </div>
-
-      </div>
-      <div className={'TwoColumns'}>
-
-      <div className="full">
-      <label className={'Formtitle'}>
-      General History: &nbsp;
-      </label>
-      <textarea type="text" rows="1" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
-      </div>
-
-      </div>
-      <div className={'TwoColumns'}>
-
-      <div className="full">
-      <label className={'Formtitle'}>
-      Chief Complaint: &nbsp;
-      </label>
-      <textarea type="text" rows="1" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
-      </div>
-
-      </div>
-      <div className={'TwoColumns'}>
-
-      <div className="full">
-      <label className={'Formtitle'}>
-      Diagnosis: &nbsp;
-      </label>
-      <textarea type="text" rows="1" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
-      </div>
-
-      </div>
-      <div className={'TwoColumns'}>
-
-      <div className="full">
-      <label className={'Formtitle'}>
-      Advice: &nbsp;
-      </label>
-      <textarea type="text" rows="2" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
-      </div>
-
-      </div>
-
-      <div className={'TwoColumns'}>
-
-      <div className="full">
-      <label className={'Formtitle'}>
-      Treatment: &nbsp;
-      </label>
-      <textarea type="text" rows="2" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
-      </div>
-
-      </div>
-      </form>
-      </AccordionItem>
-
-      </Accordion>
-      <button className={"postAdButton"} >
-      Submit Details
-      </button>
-
-      {this.displaylocaccord}
-      {this.displayverifyaccord}
 
 
-      </div>
 
       </div>
     </div>
