@@ -11,7 +11,35 @@
   margin-bottom:3%;
   margin-top:5%;
 }
-.PostPage .postAdButton{
+.PostPage .addmoreButton{
+  font-family:proxr;
+  background-color: #156dbf;
+  border: 1px solid #156dbf;
+  border-radius: 5px 5px 5px 5px;
+  color:#ffffff;
+  font-size: 130%;
+  height: 40px;
+  width: 170px;
+  float: right;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  /* margin-right: 2%; */
+}
+.PostPage .finishButton{
+  font-family:proxr;
+  background-color: #156dbf;
+  border: 1px solid #156dbf;
+  border-radius: 5px 5px 5px 5px;
+  color:#ffffff;
+  font-size: 130%;
+  height: 40px;
+  width: 170px;
+  float: left;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  /* margin-right: 2%; */
+}
+.PostPage .sugmitButton{
   font-family:proxr;
   background-color: #156dbf;
   border: 1px solid #156dbf;
@@ -73,6 +101,9 @@ height: 800px;
   display: flex;
   /* justify-content: center; */
 }
+.tempColumn{
+  /* justify-content: center; */
+}
 .PictureColum{
   margin-top: 20px;
   margin-bottom: 20px;
@@ -86,9 +117,71 @@ height: 800px;
 { margin-top: 2%;
   width: 50%;
 }
+.PostPage .leftSide_float
+{ margin-top: 2%;
+  width: 50%;
+  float: left;
+}
+
+.PostPage .rightSide_float
+{ margin-top: 2%;
+  width: 50%;
+  float: right;
+}
 .PostPage .full
 { margin-top: 2%;
   width: 100%;
+}
+.PostPage .leftter
+{ margin-top: 2%;
+  width: 25%;
+  float: left;
+  text-align: left;
+}
+.PostPage .righter
+{ margin-top: 2%;
+  width: 75%;
+  float: left;
+  text-align: left;
+}
+.PostPage .Formtitle_detail{
+  font-size: 130%;
+  font-family: proxr;
+}
+.PostPage .clinic_title
+{
+  margin-top: 2%;
+  width: 100%;
+  font-family: proxs;
+  font-size:200%;
+  color: blue;
+}
+.PostPage .print_form{
+  width: 100%;
+  border: 2px solid blue;
+  padding: 2%;
+}
+.PostPage .sub_titles_left{
+  border: 1px solid blue;
+  border-radius: 5px 5px 5px 5px;
+  font-family: proxs;
+  color:blue;
+  width: 40%;
+  float: left;
+}
+.PostPage .sub_titles_right{
+  border: 1px solid blue;
+  border-radius: 5px 5px 5px 5px;
+  font-family: proxs;
+  color:blue;
+  width: 40%;
+  float: right;
+}
+.PostPage .full_view
+{
+  /* margin-top: 20%; */
+  width: 100%;
+  float: left;
 }
 .PostPage .hints{
   color: #AAAAAA;
@@ -103,6 +196,30 @@ height: 800px;
   font-size: 150%;
   float: left;
 }
+.med_name{
+  font-family: proxs;
+  color: #342d38;
+  font-size: 100%;
+  float: left;
+  width: 30%;
+  text-align: left;
+}
+.med_form{
+  font-family: proxs;
+  color: #342d38;
+  font-size: 100%;
+  float: left;
+  width: 10%;
+  text-align: left;
+}
+.med_dosage{
+  font-family: proxs;
+  color: #342d38;
+  font-size: 100%;
+  float: left;
+  width: 20%;
+  text-align: left;
+}
 .lightitles{
   font-family: proxr;
   color: #AAAAAA;
@@ -115,6 +232,7 @@ border: 1px solid #dbd6d6;
 border-radius: 5px 5px 5px 5px;
 height: 35px;
 float: left;
+font-family: proxr;
 /* color: #342d38; */
 }
 .completearea{
@@ -157,6 +275,8 @@ float: left;
   border-right:0px;
   float: left;
   margin-left: 5%;
+  font-family: proxr;
+
 }
 .medicine_lines2{
   width: 20%;
@@ -165,6 +285,8 @@ float: left;
   border-right:0px;
   float: left;
   margin-left: 5%;
+  font-family: proxr;
+
 }
 /* .PostPage .picture_area > input
 {

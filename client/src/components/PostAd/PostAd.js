@@ -104,7 +104,18 @@ function onChangePhysical(e) {
 
 class PostAd extends Component {
 
-
+  medicine_forms = [
+    {"name":"Tablet", "value": 1},
+    {"name":"Capsule", "value": 2},
+    {"name":"Drops", "value":3},
+    {"name":"inhalers", "value":4},
+    {"name":"Syrup", "value":5},
+    {"name":"Injections", "value":5},
+    {"name":"Implants", "value":6},
+    {"name":"Patches", "value":7},
+    {"name":"Ointment", "value":8},
+    {"name":"Cream", "value":9}
+  ];
   brandsData = []
   categoriesData = []
   colorData = []
@@ -123,27 +134,14 @@ class PostAd extends Component {
   file = []
   adtitle = []
   title = []
-
+  json_add =[]
   add_medicines = []
   add_medicines1 = []
-  add_medicines2 = []
-  add_medicines3 = []
-  add_medicines4 = []
-  add_medicines5 = []
+  priscription_details = []
+  medicine_view = []
   add_form = []
-  medicine_forms = [
-    {"name":"Tablet", "value": 1},
-    {"name":"Capsule", "value": 2},
-    {"name":"Drops", "value":3},
-    {"name":"inhalers", "value":4},
-    {"name":"Syrup", "value":5},
-    {"name":"Injections", "value":5},
-    {"name":"Implants", "value":6},
-    {"name":"Patches", "value":7},
-    {"name":"Ointment", "value":8},
-    {"name":"Cream", "value":9}
-  ];
   medicine_formsdata = []
+  patient_data = []
   age = [
     {"name":"Brand New", "count": -1},
     {"name":"Less Than a Year", "count": 0},
@@ -188,24 +186,28 @@ class PostAd extends Component {
     })
   }
 
-  data_for_priscription(){
+  data_for_priscription =() =>{
 
         var ag = []
+        var forms = this.medicine_forms
         console.log(this.medicine_forms);
-        this.medicine_forms.forEach(function(i,idx,n){
+        forms.forEach((i,idx,n) =>{
           EventBus.publish("showLoading")
 
           ag.push(
-          <option className="name" value={i.name}>
+          <option className="name" value={i.value}>
           {i.name}
           </option>
           )
+          EventBus.publish("stopLoading")
 
         })
+
         console.log(this.medicine_formsdata);
         this.medicine_formsdata = ag
-        EventBus.publish("stopLoading")
-
+        this.setState((state, props) => {
+        return {counter: state.counter + props.step};
+        })
   }
 
 
@@ -323,9 +325,9 @@ class PostAd extends Component {
   constructor(props){
   super(props)
   this.state = {
-    result: ''
+    result: '',
+    render: false,
   };
-
   this.port = process.env.PORT;
 
   if (urlObj.hostname.indexOf("localhost") > -1)
@@ -351,7 +353,7 @@ handleFileInput = (e) => {
   console.log(picdata.has('userFile'));
 
 }
-handleChange = (event) => {
+handleChange = event => {
 
   this.setState({[event.target.name]: event.target.value});
   console.log(event.target.value);
@@ -767,27 +769,301 @@ componentDidUpdate(){
   }
   submitdetails =()=>{
     EventBus.publish("showLoading")
+    // ref_no
+    // date
+    // age
+    // name
+    // general_history
+    // chief_complaint
+    // description
+    // advice
+    // treatment
+    // mobile_no
 
+  //   name
+  // age
+  // mobile
+  // generalHistory
+  // diagnosis
+  // treatment
+
+
+      this.patient_data = {ref_no:this.state.ref_no, date:this.state.date, name:this.state.name, age:this.state.age, mobile:this.state.mobile_no,
+      generalHistory:this.state.general_history, diagnosis:this.state.diagnosis, chief_complaint:this.state.chief_complaint,
+      treatment:this.state.treatment, advice:this.state.advice}
+
+      console.log("patient data entered is", this.patient_data);
       this.add_medicines = this.medicine_view
       console.log(this.add_medicines);
       EventBus.publish("stopLoading")
   }
+
+
+  finish_med =()=>{
+    EventBus.publish("showLoading")
+    this.add_medicines1 = <div></div>
+    this.priscription_details = ''
+      console.log(this.json_add)
+      console.log(this.patient_data);
+      var vs = []
+      var pt_data = this.patient_data
+
+      // var print_view =
+      this.json_add.forEach((x,idy,z) =>{
+        // console.log(i.form);
+        vs.push(
+          <span>
+          <form className={'AccordionForm'}>
+          <div className={'print_form'}>
+          <div className={'TwoColumns'}>
+
+          <div className="clinic_title">
+          MUDASIR'S &nbsp;&nbsp; DENTALSURGERY
+          </div>
+
+          </div>
+
+          <div className={'TwoColumns'}>
+          <div className={'leftSide_float'}>
+          <div className={'sub_titles_left'}>
+          Complete Sterilization
+          </div>
+
+          </div>
+          <div className={'rightSide_float'}>
+          <div className={'sub_titles_right'}>
+          Latest Technology
+          </div>
+          </div>
+
+          </div>
+
+          <div className={'TwoColumns'}>
+
+          <div className="leftSide">
+          <label className={'Formtitle'}>
+          Reference No: &nbsp;
+          </label>
+          <span className={'Formtitle_detail'}> </span>
+
+          <br />
+          <label className={'Formtitle'} style={{marginLeft:"-48%"}}>
+          Mobile No: &nbsp;
+          </label>
+          <span className={'Formtitle_detail'}> </span>
+
+          </div>
+
+
+          <div className="rightSide" style={{marginLeft:"40%"}}>
+
+          <label className={'Formtitle'}>
+          Date: &nbsp;
+          </label>
+          <span className={'Formtitle_detail'}></span>
+
+          <br />
+          <label className={'Formtitle'} style={{marginLeft:"-20%"}}>
+          Age: &nbsp;
+          </label>
+          <span className={'Formtitle_detail'}> </span>
+
+
+          </div>
+
+          </div>
+          <div className={'TwoColumns'}>
+          <div className="leftter">
+
+          <span className={'Formtitle'}>
+          Name:
+          </span>
+          </div>
+
+          <div className="righter">
+          <span className={'Formtitle_detail'}> </span>
+          </div>
+          </div>
+
+          <div className="TwoColumns">
+          <div className="leftter">
+
+          <span className={'Formtitle'}>
+          General History: &nbsp;
+          </span>
+          </div>
+          <div className="righter">
+          <span className={'Formtitle_detail'}></span>
+
+          </div>
+          </div>
+
+          <div className="TwoColumns">
+          <div className="leftter">
+
+          <span className={'Formtitle'}>
+          Chief Complaint: &nbsp;
+          </span>
+          </div>
+          <div className="righter">
+
+          <span className={'Formtitle_detail'}> </span>
+          </div>
+          </div>
+
+
+          <div className="TwoColumns">
+          <div className="leftter">
+
+          <span className={'Formtitle'}>
+          Diagnosis: &nbsp;
+          </span>
+          </div>
+          <div className="righter">
+
+          <span className={'Formtitle_detail'}> </span>
+          </div>
+          </div>
+
+
+          <div className="TwoColumns">
+          <div className="leftter">
+
+          <span className={'Formtitle'}>
+          Advice: &nbsp;
+          </span>
+          </div>
+          <div className="righter">
+
+          <span className={'Formtitle_detail'}> </span>
+          </div>
+          </div>
+
+
+          <div className="TwoColumns">
+          <div className="leftter">
+
+          <span className={'Formtitle'}>
+          Treatment: &nbsp;
+          </span>
+          </div>
+          <div className="righter">
+
+          <span className={'Formtitle_detail'}> </span>
+          </div>
+          </div>
+
+          <div className="TwoColumns">
+          <div className="full">
+
+          <div className={'tempColumn'}>
+
+          <div className="full_view">
+          <div className={'med_form'}>
+           {x.form} &nbsp; &nbsp;
+          </div>
+          <div className={'med_name'}>
+           {x.name} &nbsp; &nbsp;
+          </div>
+          <div className={'med_dosage'}>
+           {x.dosage} &nbsp; &nbsp;
+          </div>
+
+          </div>
+          </div>
+
+          </div>
+          </div>
+
+          </div>
+          </form>
+          </span>
+          )
+      })
+      // <div className={'tempColumn'}>
+      //
+      // <div className="full_view">
+      // <div className={'med_form'}>
+      //  {i.form} &nbsp; &nbsp;
+      // </div>
+      // <div className={'med_name'}>
+      //  {i.name} &nbsp; &nbsp;
+      // </div>
+      // <div className={'med_dosage'}>
+      //  {i.dosage} &nbsp; &nbsp;
+      // </div>
+      //
+      // </div>
+      // </div>
+
+      this.add_medicines = vs
+      EventBus.publish("stopLoading")
+      // this.add_medicines = this.print_view
+      this.setState((state, props) => {
+      return {counter: state.counter + props.step};
+      })
+
+      console.log(this.add_medicines);
+  }
+
+
+
   addmore = () =>{
     EventBus.publish("showLoading")
-      if(this.add_medicines1 == undefined && this.add_medicines1 == ''){
-        this.add_medicines1 = this.medicine_view
-      }else if(this.add_medicines1 != undefined && this.add_medicines1 != ''){
-        this.add_medicines2 = this.medicine_view
-      }else if(this.add_medicines2 != undefined && this.add_medicines2 != ''){
-        this.add_medicines3 = this.medicine_view
-      }else if(this.add_medicines3 != undefined && this.add_medicines3 != ''){
-        this.add_medicines4 = this.medicine_view
-      }else if(this.add_medicines4 != undefined && this.add_medicines4 != ''){
-        this.add_medicines5 = this.medicine_view
-      }
-      console.log(this.add_medicines);
-      EventBus.publish("stopLoading")
+
+    if(this.state.medicine_form != '' && this.state.medicine_form != null && this.state.medicine_form != undefined &&
+        this.state.medicine_name != '' && this.state.medicine_name != null && this.state.medicine_name != undefined &&
+        this.state.medicine_dosage != '' && this.state.medicine_dosage != null && this.state.medicine_dosage != undefined){
+    console.log(this.state.medicine_form);
+    console.log(this.state.medicine_name);
+    console.log(this.state.medicine_dosage);
+
+      this.json_add.push({"form":this.state.medicine_form, "dosage": this.state.medicine_dosage, "name":this.state.medicine_name.toUpperCase()})
+      document.getElementById("create-course-form").reset();
+      this.state.medicine_form = ''
+      this.state.medicine_dosage = ''
+      this.state.medicine_name = ''
+
+    console.log(this.json_add);
+    console.log(this.add_medicines);
+    this.format_medicines()
+  }else{
+    console.log("something is empty");
+    EventBus.publish("stopLoading")
   }
+  }
+  format_medicines = () =>{
+    var vs = []
+    this.add_medicines1 = ''
+    this.json_add.forEach((i,idx,n) =>{
+      console.log(i.form);
+      vs.push(
+        <div className={'tempColumn'}>
+
+        <div className="full_view">
+        <div className={'med_form'}>
+         {i.form} &nbsp; &nbsp;
+        </div>
+        <div className={'med_name'}>
+         {i.name} &nbsp; &nbsp;
+        </div>
+        <div className={'med_dosage'}>
+         {i.dosage} &nbsp; &nbsp;
+        </div>
+
+        </div>
+        </div>
+      )
+    })
+
+    this.add_medicines1 = vs
+    EventBus.publish("stopLoading")
+
+    this.setState((state, props) => {
+    return {counter: state.counter + props.step};
+    })
+  }
+
 
 
   medicine_view =
@@ -800,22 +1076,60 @@ componentDidUpdate(){
   </label>
 
   <div>
-  <select name="medicine_form" onClick={this.handleChange} className={'inputsdropdown'}>
-  <option></option>
-  {this.medicine_formsdata}
+  <form id="create-course-form">
+  <select name="medicine_form" id="form_name" onChange={this.handleChange} className={'inputsdropdown'}>
+  <option>
+  </option>
+  <option>
+  Tablet
+  </option>
+  <option>
+  Capsule
+  </option>
+  <option>
+  Drops
+  </option>
+  <option>
+  Inhalers
+  </option>
+  <option>
+  Syrup
+  </option>
+  <option>
+  Injections
+  </option>
+  <option>
+  Implants
+  </option>
+  <option>
+  Patches
+  </option>
+  <option>
+  Ointment
+  </option>
+  <option>
+  Cream
+  </option>
+  <option>
+  Other
+  </option>
+
    </select>
+
    <textarea type="text" rows="1" cols="30" name="medicine_name" onChange={this.handleChange} placeholder="Medicine Name" className={'medicine_lines'}/>
    <textarea type="text" rows="1" cols="30" name="medicine_dosage" onChange={this.handleChange} placeholder="Medicine Dosage" className={'medicine_lines2'}/>
-
+    </form>
    </div>
   </div>
 
   </div>
-  <button className={"postAdButton"} onClick={this.addmore}>
-  Add More
+  <button className={"addmoreButton"} onClick={this.addmore}>
+  Add
+  </button>
+  <button className={"finishButton"} onClick={this.finish_med}>
+  Finish
   </button>
         </span>
-
 
 
     details_form =
@@ -827,10 +1141,15 @@ componentDidUpdate(){
 
     <div className="leftSide">
     <label className={'Formtitle'}>
-    Reference no: &nbsp;
+    Reference No: &nbsp;
     </label>
     <textarea type="text" rows="1" cols="10" name="ref_no" onChange={this.handleChange} className={'ref_date'}/>
 
+    <br />
+    <label className={'Formtitle'} style={{marginLeft:"-48%"}}>
+    Mobile No: &nbsp;
+    </label>
+    <textarea type="text" rows="1" cols="10" name="mobile_no" onChange={this.handleChange} className={'ref_date'}/>
 
     </div>
 
@@ -847,6 +1166,9 @@ componentDidUpdate(){
     Age: &nbsp;
     </label>
     <textarea type="text" rows="1" cols="10" name="age" onChange={this.handleChange} className={'ref_date'}/>
+
+
+
     </div>
 
     </div>
@@ -864,7 +1186,7 @@ componentDidUpdate(){
     <label className={'Formtitle'}>
     General History: &nbsp;
     </label>
-    <textarea type="text" rows="1" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
+    <textarea type="text" rows="1" cols="50" name="general_history" onChange={this.handleChange} className={'full_lines'}/>
     </div>
 
     </div>
@@ -874,7 +1196,7 @@ componentDidUpdate(){
     <label className={'Formtitle'}>
     Chief Complaint: &nbsp;
     </label>
-    <textarea type="text" rows="1" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
+    <textarea type="text" rows="1" cols="50" name="chief_complaint" onChange={this.handleChange} className={'full_lines'}/>
     </div>
 
     </div>
@@ -884,7 +1206,7 @@ componentDidUpdate(){
     <label className={'Formtitle'}>
     Diagnosis: &nbsp;
     </label>
-    <textarea type="text" rows="1" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
+    <textarea type="text" rows="1" cols="50" name="diagnosis" onChange={this.handleChange} className={'full_lines'}/>
     </div>
 
     </div>
@@ -894,7 +1216,7 @@ componentDidUpdate(){
     <label className={'Formtitle'}>
     Advice: &nbsp;
     </label>
-    <textarea type="text" rows="2" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
+    <textarea type="text" rows="2" cols="50" name="advice" onChange={this.handleChange} className={'full_lines'}/>
     </div>
 
     </div>
@@ -905,7 +1227,7 @@ componentDidUpdate(){
     <label className={'Formtitle'}>
     Treatment: &nbsp;
     </label>
-    <textarea type="text" rows="2" cols="50" name="description" onChange={this.handleChange} className={'full_lines'}/>
+    <textarea type="text" rows="2" cols="50" name="treatment" onChange={this.handleChange} className={'full_lines'}/>
     </div>
 
     </div>
@@ -913,7 +1235,7 @@ componentDidUpdate(){
 
     </form>
 
-    <button className={"postAdButton"} onClick={this.submitdetails}>
+    <button className={"sugmitButton"} onClick={this.submitdetails}>
     Submit Details
     </button>
     </span>
@@ -936,6 +1258,7 @@ componentDidUpdate(){
       <div className={'PostAdForm'}>
 
       {this.add_medicines}
+      {this.add_medicines1}
 
       </div>
 

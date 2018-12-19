@@ -172,6 +172,6 @@ exports.getPatientDetails = function(req,res){
       }
     })
   }else{
-    res.status(403).send({messgae:"patient_id required"});
+    res.status(403).send({message:"patient_id required"});
   }
 }
